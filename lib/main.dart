@@ -43,6 +43,22 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home_filled,
+              ),
+              label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart), label: 'Store'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Find'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.download), label: 'Downloads'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_box), label: 'My Stuff'),
+        ],
+      ),
     );
   }
 }
