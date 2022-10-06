@@ -11,20 +11,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Prime video clone app',
       theme: ThemeData(
-          //backgroundColor: const Color(0xff0E171E),
-          //primarySwatch: Colors.blue,
-          ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        appBarTheme: const AppBarTheme(
+          color: Color(0xff0E171E),
+        ),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: Color(0xff0E171E),
+        ),
+        scaffoldBackgroundColor: const Color(0xff0E171E),
+        textTheme: TextTheme(),
+      ),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({
+    super.key,
+  });
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -34,9 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
