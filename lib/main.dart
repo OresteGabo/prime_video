@@ -104,18 +104,37 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       body: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          children: const [
-            MovieItem(),
-            MovieItem(),
-            MovieItem(),
-            MovieItem(),
-            MovieItem(),
-            MovieItem(),
-            MovieItem(),
-            MovieItem(),
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 28.0),
+              child: MovieItem(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 28.0),
+              child: MovieItem(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 28.0),
+              child: MovieItem(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 28.0),
+              child: MovieItem(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 28.0),
+              child: MovieItem(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 28.0),
+              child: MovieItem(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 28.0),
+              child: MovieItem(),
+            ),
           ],
         ),
       ),
@@ -196,15 +215,81 @@ class MovieItem extends StatelessWidget {
           SizedBox(
             height: 6,
           ),
-          Container(
-            width: 160,
-            height: 100,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.fitWidth,
-                image: NetworkImage(
-                    'https://cdn.cfr.org/sites/default/files/styles/slide_3_2/public/image/2021/09/cfr_watersedge_9.11_series_900x600_post.5-b2.png.webp'),
-              ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  width: 160,
+                  height: 100,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.fitWidth,
+                      image: NetworkImage(
+                          'https://cdn.cfr.org/sites/default/files/styles/slide_3_2/public/image/2021/09/cfr_watersedge_9.11_series_900x600_post.5-b2.png.webp'),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 16,
+                ),
+                Container(
+                  width: 160,
+                  height: 100,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.fitWidth,
+                      image: NetworkImage(
+                          'https://cdn.cfr.org/sites/default/files/styles/slide_3_2/public/image/2021/09/cfr_watersedge_9.11_series_900x600_post.5-b2.png.webp'),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 16,
+                ),
+                Container(
+                  width: 160,
+                  height: 100,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.fitWidth,
+                      image: NetworkImage(
+                          'https://cdn.cfr.org/sites/default/files/styles/slide_3_2/public/image/2021/09/cfr_watersedge_9.11_series_900x600_post.5-b2.png.webp'),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 16,
+                ),
+                Container(
+                  width: 160,
+                  height: 100,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.fitWidth,
+                      image: NetworkImage(
+                          'https://cdn.cfr.org/sites/default/files/styles/slide_3_2/public/image/2021/09/cfr_watersedge_9.11_series_900x600_post.5-b2.png.webp'),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 16,
+                ),
+                Container(
+                  width: 160,
+                  height: 100,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.fitWidth,
+                      image: NetworkImage(
+                          'https://cdn.cfr.org/sites/default/files/styles/slide_3_2/public/image/2021/09/cfr_watersedge_9.11_series_900x600_post.5-b2.png.webp'),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 16,
+                ),
+              ],
             ),
           )
         ],
