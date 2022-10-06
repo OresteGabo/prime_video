@@ -13,8 +13,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Prime video clone app',
       theme: ThemeData(
+        tabBarTheme: const TabBarTheme(
+          labelColor: Colors.white,
+          unselectedLabelColor: Color(0xff56656B),
+          indicator: UnderlineTabIndicator(
+            borderSide: BorderSide(
+              width: 5.0,
+              color: Colors.white,
+            ),
+            //insets: EdgeInsets.symmetric(horizontal: 16.0),
+          ),
+        ),
+        //indicatorSize: TabBarIndicatorSize.values(2)),
         appBarTheme: const AppBarTheme(
           color: Color(0xff0E171E),
         ),
@@ -81,8 +94,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
         bottom: const TabBar(
           padding: EdgeInsets.only(left: 25),
-          labelColor: Color(0xff56656B),
-          indicatorColor: Colors.white,
           tabs: [
             Tab(text: 'Home'),
             Tab(text: 'TV Shows'),
