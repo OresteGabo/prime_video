@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xff0E171E),
         textTheme: TextTheme(),
       ),
-      home: const MyHomePage(),
+      home: DefaultTabController(length: 5, child: const MyHomePage()),
     );
   }
 }
@@ -47,7 +47,20 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        bottom: const TabBar(
+          padding: EdgeInsets.only(left: 25),
+          labelColor: Color(0xff56656B),
+          indicatorColor: Colors.white,
+          tabs: [
+            Tab(text: 'Home'),
+            Tab(text: 'TV Shows'),
+            Tab(text: 'Movies'),
+            Tab(text: 'Kids'),
+            Tab(text: 'Originals'),
+          ],
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
