@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,10 +46,39 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
+  bool _freeToMe = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Transform.scale(
+          scale: 1.5,
+          alignment: Alignment.centerLeft,
+          child: SvgPicture.network(
+            'https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg',
+            semanticsLabel: 'Prime video logo',
+            color: Colors.white,
+          ),
+        ),
+        actions: [
+          Row(
+            children: [
+              const Text('Free to me'),
+              Transform.scale(
+                scale: 0.7,
+                child: CupertinoSwitch(
+                  activeColor: Colors.blue,
+                  value: _freeToMe,
+                  onChanged: (bool value) {
+                    setState(() {
+                      _freeToMe = value;
+                    });
+                  },
+                ),
+              ),
+            ],
+          ),
+        ],
         bottom: const TabBar(
           padding: EdgeInsets.only(left: 25),
           labelColor: Color(0xff56656B),
