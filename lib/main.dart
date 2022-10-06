@@ -40,10 +40,10 @@ class MyApp extends StatelessWidget {
           selectedIconTheme: IconThemeData(size: 34),
           unselectedIconTheme: IconThemeData(size: 34),
         ),
-        scaffoldBackgroundColor: Color(0xff0E171E),
-        textTheme: TextTheme(),
+        scaffoldBackgroundColor: const Color(0xff0E171E),
+        textTheme: const TextTheme(),
       ),
-      home: DefaultTabController(length: 5, child: const MyHomePage()),
+      home: const DefaultTabController(length: 5, child: MyHomePage()),
     );
   }
 }
@@ -103,10 +103,20 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[],
+      body: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: const [
+            MovieItem(),
+            MovieItem(),
+            MovieItem(),
+            MovieItem(),
+            MovieItem(),
+            MovieItem(),
+            MovieItem(),
+            MovieItem(),
+          ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -144,6 +154,60 @@ class _MyHomePageState extends State<MyHomePage> {
             _selectedIndex = index;
           });
         },
+      ),
+    );
+  }
+}
+
+class MovieItem extends StatelessWidget {
+  const MovieItem({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 6,
+          ),
+          const Text(
+            'Included with prime',
+            style: TextStyle(color: Colors.blue, fontSize: 12),
+          ),
+          GestureDetector(
+            onTap: () {},
+            child: Row(
+              children: const [
+                Text(
+                  "Continue watching ",
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  color: Colors.white,
+                  size: 10,
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 6,
+          ),
+          Container(
+            width: 160,
+            height: 100,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.fitWidth,
+                image: NetworkImage(
+                    'https://cdn.cfr.org/sites/default/files/styles/slide_3_2/public/image/2021/09/cfr_watersedge_9.11_series_900x600_post.5-b2.png.webp'),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
