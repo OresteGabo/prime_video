@@ -18,8 +18,14 @@ class MyApp extends StatelessWidget {
         ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: Color(0xff0E171E),
+          selectedItemColor: Colors.blue,
+          unselectedItemColor: Color(0xff3F5266),
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          selectedIconTheme: IconThemeData(size: 34),
+          unselectedIconTheme: IconThemeData(size: 34),
         ),
-        scaffoldBackgroundColor: const Color(0xff0E171E),
+        scaffoldBackgroundColor: Color(0xff0E171E),
         textTheme: TextTheme(),
       ),
       home: const MyHomePage(),
@@ -37,6 +43,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,20 +55,40 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.black,
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home_filled,
-              ),
-              label: 'Home'),
+            icon: Icon(
+              Icons.home_outlined,
+            ),
+            label: 'Home',
+            backgroundColor: Colors.black,
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart), label: 'Store'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Find'),
+            icon: Icon(Icons.shopping_cart),
+            label: 'Store',
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.download), label: 'Downloads'),
+            icon: Icon(Icons.search),
+            label: 'Find',
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.account_box), label: 'My Stuff'),
+            icon: Icon(Icons.download),
+            label: 'Downloads',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_box),
+            label: 'My Stuff',
+          ),
         ],
+        currentIndex: _selectedIndex,
+
+        //selectedItemColor: Colors.amber[800],
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
       ),
     );
   }
