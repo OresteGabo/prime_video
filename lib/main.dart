@@ -60,6 +60,16 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   bool _freeToMe = false;
+  List<MovieItem> movieItems = [
+    MovieItem(),
+    MovieItem(),
+    MovieItem(),
+    MovieItem(),
+    MovieItem(),
+    MovieItem(),
+    MovieItem(),
+    MovieItem(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,33 +117,34 @@ class _MyHomePageState extends State<MyHomePage> {
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 28.0),
-              child: MovieItem(),
+            MovieListType(title: 'Continue watching', movieItems: movieItems),
+            MovieListType(
+              title: 'Amazon originals and Exclusives',
+              includedPrime: true,
+              movieItems: movieItems,
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 28.0),
-              child: MovieItem(),
+            MovieListType(
+              title: 'Movies we think yu\'ll like',
+              includedPrime: true,
+              movieItems: movieItems,
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 28.0),
-              child: MovieItem(),
+            MovieListType(
+              title: 'Categories',
+              movieItems: movieItems,
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 28.0),
-              child: MovieItem(),
+            MovieListType(
+              title: 'Current trending',
+              movieItems: movieItems,
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 28.0),
-              child: MovieItem(),
+            MovieListType(
+              title: 'Thriller Movies',
+              includedPrime: true,
+              movieItems: movieItems,
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 28.0),
-              child: MovieItem(),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 28.0),
-              child: MovieItem(),
+            MovieListType(
+              title: 'Action and Adventure movies',
+              includedPrime: true,
+              movieItems: movieItems,
             ),
           ],
         ),
@@ -178,29 +189,39 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class MovieItem extends StatelessWidget {
-  const MovieItem({Key? key}) : super(key: key);
+class MovieListType extends StatelessWidget {
+  bool includedPrime;
+  List<MovieItem> movieItems;
+  final String title;
+  MovieListType(
+      {Key? key,
+      this.includedPrime = false,
+      required this.title,
+      required this.movieItems})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(bottom: 26.0, left: 18),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             height: 6,
           ),
-          const Text(
-            'Included with prime',
-            style: TextStyle(color: Colors.blue, fontSize: 12),
-          ),
+          includedPrime
+              ? const Text(
+                  'Included with prime',
+                  style: TextStyle(color: Colors.blue, fontSize: 12),
+                )
+              : Container(),
           GestureDetector(
             onTap: () {},
             child: Row(
-              children: const [
+              children: [
                 Text(
-                  "Continue watching ",
+                  title,
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
@@ -215,84 +236,47 @@ class MovieItem extends StatelessWidget {
           SizedBox(
             height: 6,
           ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                Container(
-                  width: 160,
-                  height: 100,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.fitWidth,
-                      image: NetworkImage(
-                          'https://cdn.cfr.org/sites/default/files/styles/slide_3_2/public/image/2021/09/cfr_watersedge_9.11_series_900x600_post.5-b2.png.webp'),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 16,
-                ),
-                Container(
-                  width: 160,
-                  height: 100,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.fitWidth,
-                      image: NetworkImage(
-                          'https://cdn.cfr.org/sites/default/files/styles/slide_3_2/public/image/2021/09/cfr_watersedge_9.11_series_900x600_post.5-b2.png.webp'),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 16,
-                ),
-                Container(
-                  width: 160,
-                  height: 100,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.fitWidth,
-                      image: NetworkImage(
-                          'https://cdn.cfr.org/sites/default/files/styles/slide_3_2/public/image/2021/09/cfr_watersedge_9.11_series_900x600_post.5-b2.png.webp'),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 16,
-                ),
-                Container(
-                  width: 160,
-                  height: 100,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.fitWidth,
-                      image: NetworkImage(
-                          'https://cdn.cfr.org/sites/default/files/styles/slide_3_2/public/image/2021/09/cfr_watersedge_9.11_series_900x600_post.5-b2.png.webp'),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 16,
-                ),
-                Container(
-                  width: 160,
-                  height: 100,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.fitWidth,
-                      image: NetworkImage(
-                          'https://cdn.cfr.org/sites/default/files/styles/slide_3_2/public/image/2021/09/cfr_watersedge_9.11_series_900x600_post.5-b2.png.webp'),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 16,
-                ),
-              ],
-            ),
+          MoviesList(
+            movieItems: movieItems,
           )
         ],
+      ),
+    );
+  }
+}
+
+class MoviesList extends StatelessWidget {
+  List<MovieItem> movieItems;
+  MoviesList({Key? key, required this.movieItems}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: movieItems,
+      ),
+    );
+  }
+}
+
+class MovieItem extends StatelessWidget {
+  const MovieItem({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(right: 16),
+      width: 160,
+      height: 100,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.fitWidth,
+          image: NetworkImage(
+              'https://cdn.cfr.org/sites/default/files/styles/slide_3_2/public/image/2021/09/cfr_watersedge_9.11_series_900x600_post.5-b2.png.webp'),
+        ),
       ),
     );
   }
