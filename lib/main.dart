@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Prime video clone app',
-      theme: ThemeData(
+      theme: ThemeData.dark().copyWith(
         tabBarTheme: const TabBarTheme(
           labelColor: Colors.white,
           unselectedLabelColor: Color(0xff56656B),
@@ -27,10 +27,8 @@ class MyApp extends StatelessWidget {
               width: 5.0,
               color: Colors.white,
             ),
-            //insets: EdgeInsets.symmetric(horizontal: 16.0),
           ),
         ),
-        //indicatorSize: TabBarIndicatorSize.values(2)),
         appBarTheme: const AppBarTheme(
           color: Color(0xff0E171E),
         ),
@@ -44,8 +42,12 @@ class MyApp extends StatelessWidget {
           unselectedIconTheme: IconThemeData(size: 34),
         ),
         scaffoldBackgroundColor: const Color(0xff0E171E),
-        textTheme: const TextTheme(),
       ),
+      /* ThemeData(
+
+
+
+      ),*/
       home: const DefaultTabController(length: 5, child: MainPage()),
     );
   }
