@@ -4,6 +4,7 @@ import 'package:prime_video_clone/screens/home_page.dart';
 import 'package:prime_video_clone/screens/downloads_page.dart';
 import 'package:prime_video_clone/screens/store_page.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:prime_video_clone/screens/my_stuff.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -20,19 +21,20 @@ class _MainPageState extends State<MainPage> {
     Builder(builder: (_) => const StorePage()),
     Builder(builder: (_) => const DownloadsPage()),
     Builder(builder: (_) => const MyHomePage()),
-    Builder(builder: (_) => const MyHomePage())
+    Builder(builder: (_) => const MyStuffPage())
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _children[_currentIndex],
-      bottomNavigationBar: bottomNavigationBar(),
+    return SafeArea(
+      child: Scaffold(
+        body: _children[_currentIndex],
+        bottomNavigationBar: bottomNavigationBar(),
+      ),
     );
   }
 
   BottomNavigationBar bottomNavigationBar() {
-    //int selectedIndex = 0;
     return BottomNavigationBar(
       items: const [
         BottomNavigationBarItem(
@@ -59,7 +61,7 @@ class _MainPageState extends State<MainPage> {
           label: 'My Stuff',
         ),
       ],
-      backgroundColor: Colors.black,
+      //backgroundColor: Colors.black,
       currentIndex: _currentIndex,
       onTap: onTabTapped,
     );
