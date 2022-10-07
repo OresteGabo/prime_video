@@ -27,6 +27,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: appBar(),
       body: TabBarView(
         children: [
           homeTabView(movieItems: movieItems),
@@ -54,6 +55,50 @@ class _MyHomePageState extends State<MyHomePage> {
             "Originals",
             style: TextStyle(color: Colors.white),
           )))
+        ],
+      ),
+    );
+  }
+
+  AppBar appBar() {
+    bool _freeToMe = false;
+    return AppBar(
+      leading: Transform.scale(
+        scale: 1.5,
+        alignment: Alignment.centerLeft,
+        child: SvgPicture.network(
+          'https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg',
+          semanticsLabel: 'Prime video logo',
+          color: Colors.white,
+        ),
+      ),
+      actions: [
+        Row(
+          children: [
+            const Text('Free to me'),
+            Transform.scale(
+              scale: 0.7,
+              child: CupertinoSwitch(
+                activeColor: Colors.blue,
+                value: _freeToMe,
+                onChanged: (bool value) {
+                  setState(() {
+                    _freeToMe = value;
+                  });
+                },
+              ),
+            ),
+          ],
+        ),
+      ],
+      bottom: const TabBar(
+        padding: EdgeInsets.only(left: 25),
+        tabs: [
+          Tab(text: 'Home'),
+          Tab(text: 'TV Shows'),
+          Tab(text: 'Movies'),
+          Tab(text: 'Kids'),
+          Tab(text: 'Originals'),
         ],
       ),
     );
